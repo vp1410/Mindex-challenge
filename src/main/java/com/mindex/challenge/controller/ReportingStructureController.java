@@ -7,6 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * We make use of @RestController as it is a combination of @Controller and @ResponseBody annotation.
+ * It also converts response to JSON or XML
+ */
 @RestController
 public class ReportingStructureController {
     private  static  final Logger LOG = LoggerFactory.getLogger(ReportingStructure.class);
@@ -14,7 +19,11 @@ public class ReportingStructureController {
     @Autowired
     ReportingStructureService reportingStructureService;
 
-    @GetMapping("/reportingstructure/{id}")
+    /**
+     * Task: New REST endpoint created which accepts employeeID and returns reportingStructure for that id
+     *
+     */
+    @GetMapping("/reportingStructure/{id}")
     public ReportingStructure read(@PathVariable String id){
         LOG.debug("Read employee structure req for id[{}]",id);
         return reportingStructureService.readReportingStructure(id);

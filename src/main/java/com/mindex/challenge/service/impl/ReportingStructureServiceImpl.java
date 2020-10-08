@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/* We are making use of @Service as it provides logic to operate on data sent to and from DAO and client */
 
 @Service
 public class ReportingStructureServiceImpl implements ReportingStructureService {
@@ -21,6 +22,12 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         this.employeeService = employeeService;
     }
 
+    /**
+     * Here we can read existing reporting structure
+     *
+     * @param id required to fetch data
+     * @return reportingStructure object
+     */
     @Override
 
     public ReportingStructure readReportingStructure(String id){
@@ -34,6 +41,11 @@ public class ReportingStructureServiceImpl implements ReportingStructureService 
         return reportingStructure;
     }
 
+    /**
+     * Here we can count directReport of each employee
+     * @param employee which requires employeeID
+     * @return numberOfReports
+     */
     public int totalNumberOfReports(Employee employee){
         int numberOfReports = 0;
         if(employee.getDirectReports() != null){
